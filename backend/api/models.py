@@ -32,8 +32,7 @@ class Category(models.Model):
     class Meta: 
         ordering =['type', 'order', 'name']
         
-def __str__(self):
-        # e.g. “Medications → Analgesics” for a subcategory
+    def __str__(self):
         return (
             f"{self.parent.name} → {self.name}"
             if self.parent else
@@ -103,9 +102,7 @@ class Profile(models.Model):
         default='es', 
         help_text="e.g. 'es' for Spanish "
     )
-    
-def __str__(self):
-    return f"{self.user.username}'s profile"
 
-
+    def __str__(self):
+        return f"{self.user.username}'s profile"
     
