@@ -50,7 +50,7 @@ class Phrase(models.Model):
     text_original = models.CharField(max_length=100)
     text_translation = models.CharField(max_length=100)
     added_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL, # how do i get the user here? lol
+        settings.AUTH_USER_MODEL, 
         on_delete=models.SET_NULL,
         null=True, 
         related_name='added_phrases'
@@ -65,7 +65,7 @@ class Phrase(models.Model):
         
 class Favorite(models.Model): 
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, # Again, find where you put this value in settings?
+        settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE, 
         related_name='favorites'
     )    
