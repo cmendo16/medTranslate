@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', 
-    'api',
+    'apps.users',
+    'djoser'
 ]
 
 MIDDLEWARE = [
@@ -152,5 +153,14 @@ REST_FRAMEWORK = {
     "DEFAULT_THROTTLE_RATES": {
         "user": "60/min", 
         "anon": "10/min",  
+    },
+}
+
+
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'SERIALIZERS': {
+    'user_create': 'apps.users.serializers.UserCreateSerializer',
+    'user': 'apps.users.serializers.UserSerializer',
     },
 }
