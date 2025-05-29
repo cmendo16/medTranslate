@@ -1,26 +1,10 @@
 from rest_framework import serializers
-from .models import Category, Favorite, Phrase, Profile
 from django.contrib.auth import get_user_model, password_validation
 from .models import Profile 
 from django.db import transaction
 from rest_framework.validators import UniqueValidator
 
-User = get_user_model()
-class CategorySerializer(serializers.ModelSerializer): 
-    class Meta: 
-        model = Category
-        fields = ('id', 'name', 'type', 'parent', 'order',)
-        
-class PhraseSerializer(serializers.ModelSerializer): 
-    class Meta: 
-        model = Phrase
-        fields = ('id', 'text_original', 'text_translation', 'category', 'added_by')
-        
-class FavoriteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model  = Favorite
-        fields = ('id','user','phrase','created_at')
-
+User = get_user_model()    
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Profile
