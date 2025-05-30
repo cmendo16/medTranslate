@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 from dotenv import load_dotenv
 load_dotenv()
+from decouple import config
 
 from pathlib import Path
 
@@ -22,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d+a7d%*txvo3zoo20jxr96^x7ts4g8nechk2#jjz#b1*nl=e69'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -41,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework', 
     'apps.users',
+    'apps.categories',
+    'apps.phrases',
+    'apps.favorites',
     'djoser'
 ]
 
