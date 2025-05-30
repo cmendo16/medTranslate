@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from backend.apps.categories.models import Category
+from ..categories.models import Category
 
 # Register your models here.
 

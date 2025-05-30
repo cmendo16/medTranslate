@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import permissions, viewsets
-from backend.apps.categories.models import Category
+from .models import Category
 from .serializers import CategorySerializer
 
 # Create your views here.
