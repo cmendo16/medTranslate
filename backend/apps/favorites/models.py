@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.db import models
-
-from backend.apps.phrases.models import Phrase
+from apps.phrases.models import Phrase
 
 # Create your models here.
 class Favorite(models.Model): 

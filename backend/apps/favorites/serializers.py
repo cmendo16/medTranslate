@@ -1,4 +1,4 @@
-from backend.apps.favorites.models import Favorite
+from .models import Favorite
 from rest_framework import serializers
 
 class FavoriteSerializer(serializers.ModelSerializer):

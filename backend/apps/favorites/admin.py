@@ -1,5 +1,5 @@
 from django.contrib import admin
-from backend.apps.favorites.models import Favorite
+from ..favorites.models import Favorite
 
 # Register your models here.
 @admin.register(Favorite)
