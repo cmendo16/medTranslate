@@ -1,5 +1,5 @@
 from django.contrib import admin
-from backend.apps.phrases.models import Phrase
+from ..phrases.models import Phrase
 
 # Register your models here.
 

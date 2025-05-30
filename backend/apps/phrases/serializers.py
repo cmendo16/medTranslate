@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from backend.apps.phrases.models import Phrase
+from ..phrases.models import Phrase
 
 class PhraseSerializer(serializers.ModelSerializer): 
     class Meta: 

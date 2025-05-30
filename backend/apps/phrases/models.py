@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from backend.apps.categories.models import Category
+from ..categories.models import Category
 
 # Create your models here.
 class Phrase(models.Model):
