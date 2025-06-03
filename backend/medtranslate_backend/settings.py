@@ -162,9 +162,16 @@ REST_FRAMEWORK = {
 
 
 DJOSER = {
-    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
-    'SERIALIZERS': {
-    'user_create': 'apps.users.serializers.UserCreateSerializer',
-    'user': 'apps.users.serializers.UserSerializer',
-    },
-}
+       'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',  # URL for frontend password reset confirmation
+       'ACTIVATION_URL': '#/activate/{uid}/{token}',  # URL for frontend activation
+        'SEND_ACTIVATION_EMAIL': False,
+        'SEND_CONFIRMATION_EMAIL': False,
+        'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
+        
+       'SERIALIZERS': {  
+           'user': 'djoser.serializers.UserSerializer',
+       },
+   }
+
+# for development purposes, sends email to console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
