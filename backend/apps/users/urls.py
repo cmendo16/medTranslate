@@ -8,5 +8,4 @@ router.register(r'profiles', ProfileViewSet, basename='profile')
 urlpatterns = [
     path('', include(router.urls)),
     path('signup/', SignupView.as_view(), name='signup'),
-
 ]
