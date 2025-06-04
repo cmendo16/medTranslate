@@ -49,7 +49,7 @@ jobs:
         pip install -r backend/requirements.txt
 
     - name: Run migrations
-      run: python manage.py migrate
+      run: python backend/manage.py migrate
 
     - name: Run tests
-      run: python manage.py test
+      run: python backend/manage.py test
