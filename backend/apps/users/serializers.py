@@ -6,10 +6,33 @@ from rest_framework.validators import UniqueValidator
 
 User = get_user_model()    
 class ProfileSerializer(serializers.ModelSerializer):
+    username   = serializers.CharField(source="user.username",   read_only=True)
+    first_name = serializers.CharField(source="user.first_name", read_only=True)
+    last_name  = serializers.CharField(source="user.last_name",  read_only=True)
+
     class Meta:
         model  = Profile
-        fields = ('user','mode','preferred_language')
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "mode",
+            "preferred_language",
+    )
+               
+    def update(self, instance, validated_data): 
+        user_data = validated_data.pop("user", {})
+        for attr, value in validated_data.items(): 
+            setattr(instance, attr, value)
+        instance.save()
         
+        # updating the user's fields
+        user = instance.user
+        for attr, value in user_data.items(): 
+            setattr(user, attr, value)
+        user.save()
+        
+        return instance
 
 class SignupSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -35,7 +58,9 @@ class SignupSerializer(serializers.ModelSerializer):
 
     @transaction.atomic      
     def create(self, validated_data):
-        validated_data.pop("password2")  
+        validated_data.pop("password2")
         user = User.objects.create_user(**validated_data)
+        
+        Profile.objects.create(user=user)      
         
         return user
