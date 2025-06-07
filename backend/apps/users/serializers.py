@@ -7,8 +7,8 @@ from rest_framework.validators import UniqueValidator
 User = get_user_model()    
 class ProfileSerializer(serializers.ModelSerializer):
     username   = serializers.CharField(source="user.username",   read_only=True)
-    first_name = serializers.CharField(source="user.first_name", read_only=True)
-    last_name  = serializers.CharField(source="user.last_name",  read_only=True)
+    first_name = serializers.CharField(source="user.first_name", read_only=False)
+    last_name  = serializers.CharField(source="user.last_name",  read_only=False)
 
     class Meta:
         model  = Profile
@@ -20,20 +20,12 @@ class ProfileSerializer(serializers.ModelSerializer):
             "preferred_language",
     )
                
-    def update(self, instance, validated_data): 
+    def update(self, instance, validated_data):
         user_data = validated_data.pop("user", {})
-        for attr, value in validated_data.items(): 
-            setattr(instance, attr, value)
-        instance.save()
-        
-        # updating the user's fields
-        user = instance.user
-        for attr, value in user_data.items(): 
-            setattr(user, attr, value)
-        user.save()
-        
-        return instance
-
+        for attr, value in user_data.items():
+            setattr(instance.user, attr, value)
+        instance.user.save()
+        return super().update(instance, validated_data)
 class SignupSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
