@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'apps.categories',
     'apps.phrases',
     'apps.favorites',
-    'djoser'
+    'djoser', 
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'medtranslate_backend.urls'
@@ -175,3 +177,7 @@ DJOSER = {
 
 # for development purposes, sends email to console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000/'
+]
