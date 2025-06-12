@@ -1,6 +1,6 @@
 from django.shortcuts import render
+# Favorites view for getting, creating and deleting favorite phrases 
 
-# Create your views here.
 from .models import Favorite
 from .serializers import  FavoriteSerializer
 from rest_framework import permissions, viewsets
@@ -15,4 +15,3 @@ class FavoriteViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-    
