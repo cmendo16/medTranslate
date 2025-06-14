@@ -179,5 +179,5 @@ DJOSER = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000/'
+    'http://localhost:3000'
 ]
