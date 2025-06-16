@@ -5,7 +5,7 @@ from ..phrases.models import Phrase
 
 @admin.register(Phrase)
 class PhraseAdmin(admin.ModelAdmin):
-    list_display = ("text_original", "text_translation", "category", "added_by")
+    list_display = ("id","text_original", "text_translation", "category", "added_by")
     list_filter = ("category__type",)
     search_fields = ("text_original", "text_translation",)
     
