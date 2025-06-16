@@ -5,10 +5,12 @@ from django.conf import settings
 class Category(models.Model):
     MEDICATION = 'med' 
     SYMPTOM = 'sym'
+    COMMON_SIGS = 'sig'
     
     TYPE_CHOICES = [
         (MEDICATION, 'Medication'), 
         (SYMPTOM, 'Symptom'),
+        (COMMON_SIGS, 'Common Sigs')
     ]
     
     name = models.CharField(max_length=100)
