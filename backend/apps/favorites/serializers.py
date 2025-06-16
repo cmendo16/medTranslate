@@ -13,8 +13,9 @@ class FavoriteSerializer(serializers.ModelSerializer):
     phrase_id = serializers.PrimaryKeyRelatedField(
         queryset=Phrase.objects.all(),
         write_only=True,
-         source="phrase",
+        source="phrase",
     )
     class Meta:
         model  = Favorite
-        fields = '__all__' 
+        fields = ['id', 'favorite_phrase', 'phrase_id', 'created_at'
+        ]
