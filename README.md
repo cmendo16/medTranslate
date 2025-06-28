@@ -13,9 +13,9 @@ medTranslate is a HIPAA-compliant web application designed to provide accurate t
 - **Search Functionality:**  
   Quick filtering and searching through extensive phrasebooks. 🔍
 - **Responsive Design:**  
-  Built with Material UI for a seamless, accessible experience on all devices. 📱💻
+  Building with Material UI for a seamless, accessible experience on all devices. 📱💻
 - **Scalable Architecture:**  
-  Designed for scalability with Docker containerization and Kubernetes orchestration. 🚀
+  Designing for scalability with Docker containerization and Kubernetes orchestration. 🚀
 
 ## Tech Stack 🛠️
 
