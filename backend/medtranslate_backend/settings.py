@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 from decouple import config
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', 
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist', 
     'apps.users',
     'apps.categories',
     'apps.phrases',
@@ -181,3 +183,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
+
+SIMPLE_JWT = { 
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
+    "ROTATE_REFRESH_TOKENS": True, 
+    "BLACKLIST_AFTER_ROTATION": True,
+ }
