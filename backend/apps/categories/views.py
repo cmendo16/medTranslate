@@ -3,9 +3,9 @@ from rest_framework import permissions, viewsets
 from .models import Category
 from .serializers import CategorySerializer
 
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     
-    queryset         = Category.objects.all().select_related("parent")
+    queryset = Category.objects.all().select_related("parent")
     serializer_class = CategorySerializer
 
     def get_permissions(self):

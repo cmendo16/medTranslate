@@ -11,6 +11,8 @@ class Phrase(models.Model):
         related_name='phrases'
     )
     
+    is_default = bool
+    
     text_original = models.CharField(max_length=100)
     text_translation = models.CharField(max_length=100)
     added_by = models.ForeignKey(
