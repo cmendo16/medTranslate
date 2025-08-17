@@ -11,7 +11,7 @@ class Phrase(models.Model):
         related_name='phrases'
     )
     
-    is_default = bool
+    is_default = models.BooleanField(default = False, db_index =True)
     
     text_original = models.CharField(max_length=100)
     text_translation = models.CharField(max_length=100)
